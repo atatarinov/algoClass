@@ -1,5 +1,4 @@
 /*
-
 STACK
 
 Abstract data type
@@ -9,7 +8,6 @@ Note that there is a natural order. Elements are removed in the reverse order of
 
 DO NOT use an array and the native push/pop method in your implementation. That's too easy, yeah? =P
 Use an object as the underlying data structure.
-
 
 *** Operations:
 
@@ -28,7 +26,6 @@ Similiar to pop, but do not remove element from collection
 myStack.count()
 => number of elements in stack
 
-
 *** Additional Exercises:
 
 Modify your stack to take a max capacity and return a string if you try to add an element when there's no more room:
@@ -45,34 +42,60 @@ stack values - (first)2-5-7-3-6-9(last)
 myStack.until(7)
 => 4
 What's the time complexity?
-
-
-
  */
 
 function Stack(capacity) {
   // implement me...
+  this.capacity = capacity;
+  this.currentItem = 0;
 }
 
 Stack.prototype.push = function(value) {
   // implement me...
+  if (this.currentItem >= this.capacity) {
+    return 'Max capacity already reached. Remove element before adding a new one.';
+  }
+  this[++this.currentItem] = value;
 };
-// Time complexity:
+// Time complexity: O(1)
 
 Stack.prototype.pop = function() {
   // implement me...
+  if (this.currentItem <= 0) return 'Can\'t delete an item from empty stack';
+  else delete this[this.currentItem--];
 };
-// Time complexity:
+// Time complexity: O(1)
 
 Stack.prototype.peek = function() {
   // implement me...
+  return this[this.currentItem];
 };
-// Time complexity:
+// Time complexity: O(1)
 
 Stack.prototype.count = function() {
   // implement me...
+  return this.currentItem;
 };
-// Time complexity:
+// Time complexity: O(1)
+
+Stack.prototype.contains = function(val) {
+  for (let i in this) {
+    if (this[i] === val) return true;
+  }
+  return false;
+};
+// Time complexity: O(n)
+
+Stack.prototype.until = function(val) {
+  let itemVal;
+  for (let i in this) {
+    if (this[i] === val) {
+      itemVal = i;
+    }
+  }
+  return this.currentItem - itemVal + 1;
+};
+// Time complexity: O(n)
 
 
 /*
