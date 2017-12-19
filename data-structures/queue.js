@@ -52,17 +52,25 @@ What's the time complexity?
 
 function Queue(capacity) {
   // implement me...
+  this.capacity = capacity;
+  this.currentItem = 0;
 }
 
 Queue.prototype.enqueue = function(value) {
   // implement me...
+  this[++this.currentItem] = value;
 };
-// Time complexity:
+// Time complexity: O(1)
 
 Queue.prototype.dequeue = function() {
   // implement me...
+
+
+
+
+
 };
-// Time complexity:
+// Time complexity: O(1)
 
 Queue.prototype.peek = function() {
   // implement me...
@@ -70,10 +78,14 @@ Queue.prototype.peek = function() {
 
 Queue.prototype.count = function() {
   // implement me...
+  return this.currentItem;
 };
 // Time complexity:
 
-
+let myQueue = new Queue(10);
+myQueue.enqueue('mama');
+myQueue.enqueue('papa');
+myQueue.dequeue()
 
 /*
 *** Exercises:
