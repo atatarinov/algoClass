@@ -29,12 +29,38 @@ function exponent(base, expo) {
   console.log(sum);
 }
 
-// exponent(5, 3);
 
 //4. Write a function 'RecursiveExponent' that takes two arguments base, and expo, recursively returns exponent value of the base.
+function exponentRec(base, expo) {
+  if (expo <= 1) return base;
 
+  return base * exponentRec(base, expo - 1);
+}
 
 //5. Write a function 'recursiveMultiplier' that takes two arguments, 'arr and num', and multiplies each arr value into by num and returns an array of the values.
+let numArr = [1, 2, 3, 4, 5];
 
+function recursiveMultiplier(arr, num) {
+  // doesn't work properly
+  if (arr.length === 1) {
+    arr[0] = arr[0] * num;
+    return;
+  }
+  else {
+    arr[arr.length -1] = arr[arr.length -1] * num;
+    recursiveMultiplier(arr.slice(0, -1), num);
+    console.log(arr)
+  }
+  return arr;
+}
+
+recursiveMultiplier(numArr, 2);
 
 //6. Write a function 'recursiveReverse' that takes an array and uses recursion to return its contents in reverse
+function recursiveReverse(arr) {
+  let result = [];
+  if (!arr.length) return result;
+
+  return result.concat(recursiveReverse(arr.slice(1)), arr[0]);
+}
+
