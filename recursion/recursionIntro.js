@@ -38,20 +38,19 @@ function exponentRec(base, expo) {
 }
 
 //5. Write a function 'recursiveMultiplier' that takes two arguments, 'arr and num', and multiplies each arr value into by num and returns an array of the values.
-let numArr = [1, 2, 3, 4, 5];
 
 function recursiveMultiplier(arr, num) {
-  // doesn't work properly
-  if (arr.length === 1) {
-    arr[0] = arr[0] * num;
-    return;
+  let result = [];
+
+  function recurse(arr, num) {
+    if (!arr.length) return arr;
+
+    let item = arr.shift();
+    result.push(item * num);
+    recurse(arr, num);
   }
-  else {
-    arr[arr.length -1] = arr[arr.length -1] * num;
-    recursiveMultiplier(arr.slice(0, -1), num);
-    console.log(arr)
-  }
-  return arr;
+  recurse(arr, num);
+  return result;
 }
 
 recursiveMultiplier(numArr, 2);
