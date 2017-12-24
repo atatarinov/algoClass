@@ -34,4 +34,19 @@ function bubbleSort(arr) {
   return arr;
 }
 
+function bubbleSort2(arr) {
+  let wall = arr.length -1;
+  while (wall > 0) {
+    for (let i = 0; i < wall; i++) {
+      if (arr[i] > arr[i + 1]) {
+        let temp = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
+      }
+    }
+    wall--;
+  }
+  return arr;
+}
+
 // Time complexity: O(n^2)
