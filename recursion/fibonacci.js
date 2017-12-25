@@ -1,3 +1,4 @@
+'use strict';
 /*
 
 Write a function that outputs the nth Fibonnaci number. A number in this sequence is found by adding up the two numbers before it.

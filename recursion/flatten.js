@@ -1,3 +1,4 @@
+'use strict';
 /*
 Implement a function that flattens a nested array.
 

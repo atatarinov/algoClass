@@ -1,3 +1,4 @@
+'use strict';
 /*
 MERGE SORT
 
@@ -28,3 +29,41 @@ subarrays for regular merge sort: [ [1], [2], [4], [5], [9] ]
 subarrays for natural merge sort: [ [1,2], [4,5], [9] ]
 
 */
+
+function mergeSort(arr) {
+  if (arr.length < 2) return arr;
+
+  let splits = split(arr),
+      left = splits[0],
+      right = splits[1];
+
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+function split(arr) {
+  const center = arr.length / 2;
+  const left = arr.slice(0, center);
+  const right = arr.slice(center);
+  return [left, right];
+}
+
+function merge(left, right) {
+  let merged = [],
+      leftIdx = 0,
+      rightIdx = 0;
+
+  while (leftIdx < left.length && rightIdx < right.length) {
+    if (left[leftIdx] < right[rightIdx]) {
+      merged.push(left[leftIdx]);
+      leftIdx++;
+    } else {
+      merged.push(right[rightIdx]);
+        rightIdx++;
+    }
+  }
+  for (; leftIdx < left.length; leftIdx++) merged.push(left[leftIdx]);
+  for (; rightIdx < right.length; rightIdx++) merged.push(right[rightIdx]);
+  return merged;
+}
+
+// Time complexity O(n*log(n))
