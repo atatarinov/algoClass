@@ -9,17 +9,17 @@ output   0 1 1 2 3 5 8 13 21 34 ...
 
 What is the time complexity? Can you think of optimizing your solution? (Hint: look up dynamic programming)
 */
-function fib(n) {
+const fib = (n) => {
   if (n <= 2) return 1;
 
   return fib(n - 1) + fib(n - 2);
-}
+};
 
 // O(2n) => exponential
 
 
 //Memoization solution
-function fib2(n) {
+const fib2 = (n) => {
   let memo = [];
   let result;
   if (memo[n]) return memo[n];
@@ -29,11 +29,11 @@ function fib2(n) {
 
   memo[n] = result;
   return result;
-}
+};
 //Time complexity O(n)
 
 //Bottom-Up approach
-function fib3(n) {
+const fib3 = (n) => {
   if (n <= 2) return 1;
 
   let results = [];
@@ -44,5 +44,5 @@ function fib3(n) {
     results[i] = results[i - 1] + results[i - 2];
   }
   return results[n];
-}
+};
 //Time complexity O(n)

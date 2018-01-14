@@ -21,9 +21,12 @@ Variants:
 
 */
 
-function bubbleSort(arr) {
+const bubbleSort = (arr) => {
+  //loop through the arr
   for (let i = 0; i < arr.length - 1; i++) {
+    //loop again, each time going to 1 index less
     for (let j = 0; j < arr.length - 1 - i; j++) {
+      //if the next index is larger, swap
       let temp;
       if (arr[j] > arr[j + 1]) {
         temp = arr[j];
@@ -33,10 +36,10 @@ function bubbleSort(arr) {
     }
   }
   return arr;
-}
+};
 
-function bubbleSort2(arr) {
-  let wall = arr.length -1;
+const bubbleSort2 = (arr) => {
+  let wall = arr.length - 1;
   while (wall > 0) {
     for (let i = 0; i < wall; i++) {
       if (arr[i] > arr[i + 1]) {
@@ -48,6 +51,6 @@ function bubbleSort2(arr) {
     wall--;
   }
   return arr;
-}
+};
 
 // Time complexity: O(n^2)
