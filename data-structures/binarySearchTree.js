@@ -57,13 +57,23 @@ function BinarySearchTree (value) {
   this.right = null;
 }
 
-BinarySearchTree.prototype.insert = function(value) {
-  // implement me...
+BinarySearchTree.prototype.insert = function(val) {
+  let direction = val < this.value ? 'right' : 'left';
+
+  if (!this[direction]) {
+    this[direction] = new BinarySearchTree(val);
+  } else {
+    this[direction].insert(val);
+  }
 };
 // Time complexity:
 
-BinarySearchTree.prototype.contains = function(value) {
-  // implement me...
+BinarySearchTree.prototype.contains = function(val) {
+  if (val === this.value) return true;
+
+  let direction = val < this.value ? 'right' : 'left';
+  if (!this[direction]) return false;
+  else return this[direction].contains(val);
 };
 // Time complexity:
 
