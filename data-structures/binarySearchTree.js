@@ -71,27 +71,35 @@ BinarySearchTree.prototype.insert = function(val) {
 BinarySearchTree.prototype.contains = function(val) {
   if (val === this.value) return true;
 
-  let direction = val < this.value ? 'right' : 'left';
+  let direction = val < this.value ? 'left' : 'right';
   if (!this[direction]) return false;
   else return this[direction].contains(val);
 };
 // Time complexity:
 
 BinarySearchTree.prototype.traverseDepthFirst_inOrder = function(fn) {
-  // implement me...
+  // from smaller to larger (left, root, right)
+  if (this.left) this.left.traverseDepthFirst_inOrder(fn);
+  fn(this.value);
+  if (this.right) this.right.traverseDepthFirst_inOrder(fn);
 };
 // Time complexity:
 
 BinarySearchTree.prototype.traverseDepthFirst_preOrder = function(fn) {
-  // implement me...
+  // rooth, left , right
+  fn(this.value);
+  if (this.left) this.left.traverseDepthFirst_inOrder(fn);
+  if (this.right) this.right.traverseDepthFirst_inOrder(fn);
 };
 // Time complexity:
 
 BinarySearchTree.prototype.traverseDepthFirst_postOrder = function(fn) {
-  // implement me...
+  // smaller child first, then bigger, then the parent
+  if (this.left) this.left.traverseDepthFirst_inOrder(fn);
+  if (this.right) this.right.traverseDepthFirst_inOrder(fn);
+  fn(this.value);
 };
 // Time complexity:
-
 
 BinarySearchTree.prototype.checkIfFull = function() {
   // implement me...
@@ -102,3 +110,16 @@ BinarySearchTree.prototype.checkIfBalanced = function() {
   // implement me...
 };
 // Time complexity:
+
+// ******* EXTRA ******
+BinarySearchTree.prototype.traverseBreadthFirst = function(fn) {
+  let queue = [this];
+  let tree;
+
+  while (queue.length) {
+    tree = queue.shift();
+    fn(tree.value);
+    if (tree.left) queue.push(tree.left);
+    if (tree.right) queue.push(tree.right);
+  }
+};
